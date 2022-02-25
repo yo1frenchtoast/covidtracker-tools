@@ -921,7 +921,7 @@
                             type: "line",
                             mode: "horizontal",
                             scaleID: "y-axis-0",
-                            value: 3000,
+                            value: 1500,
                             borderColor: "green",
                             borderWidth: 2,
                             label: {
