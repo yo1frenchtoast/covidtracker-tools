@@ -1,15 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-<head>
-               <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
-</head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
 
 <style>
+
 .btn-actif{
     border: 1px solid black;
     padding: 6px;
@@ -117,11 +108,11 @@ p {
 
     <h3>Nombre de décès hospitaliers quotidien</h3>
     <p>Nombre de personnes décédées à l'hôpital avec Covid19 chaque jour.</p>
-    <div id="deces_hosp" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="deces_hosp" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des décès hospitaliers</h3>
     <p>Taux d'évolution hebdomadaire du nombre quotidien de personnes décédées à l'hôpital avec Covid19.</p>
-    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <br>
     <br>
@@ -132,12 +123,12 @@ p {
 <script>
 
 function updateDataDeces(){
-    N = data_France.france.deces_hospitaliers.valeur.length;
-    let jour_nom = data_France.france["deces_hospitaliers"].jour_nom;
-    let jour = data_France.france[jour_nom][N-1];
+    N = data_France.deces_hospitaliers.valeur.length;
+    let jour_nom = data_France["deces_hospitaliers"].jour_nom;
+    let jour = data_France[jour_nom][N-1];
 
-    document.getElementById("nb_total_deces").innerHTML = printableNumber(data_France.france.deces_hospitaliers_total.valeur);
-    document.getElementById("nb_quotidien_deces").innerHTML = printableNumber(data_France.france.deces_hospitaliers.valeur[N-1]);
+    document.getElementById("nb_total_deces").innerHTML = printableNumber(data_France.deces_hospitaliers_total.valeur);
+    document.getElementById("nb_quotidien_deces").innerHTML = printableNumber(data_France.deces_hospitaliers.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
@@ -150,8 +141,8 @@ function buildChartDeces(){
     let data_nom = "deces_hospitaliers";
     let jour_nom = "jour_new"
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: '%{y:.1f} décès<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -162,11 +153,11 @@ function buildChartDeces(){
         }
     };
 
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
+    let N = data_France[jour_nom].length;
+    let x_min = data_France[jour_nom][N-300];
+    let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur);
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur);
 
     var layout = { 
         images: IMAGES,
@@ -175,10 +166,10 @@ function buildChartDeces(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>décès<br>" + printableTaux(data_France.france["croissance_"+data_nom+"_rolling7"].valeur[N-1]) + "%",
+            text: printableNumber(data_France[data_nom].valeur[N-1]) + "<br>décès<br>" + printableTaux(data_France["croissance_"+data_nom+"_rolling7"].valeur[N-1]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -198,15 +189,9 @@ function buildChartDeces(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -222,12 +207,12 @@ function buildChartDeces(){
 function buildChartDecesTauxDeCroissance(){
     let MAX_VALUES = 100;
     let data_nom = "croissance_deces_hospitaliers";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
+    let jour_nom = data_France[data_nom].jour_nom;
+    let N = data_France[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        x: data_France[jour_nom].slice(9, N-3),
+        y: data_France[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -238,7 +223,7 @@ function buildChartDecesTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
+    data_France[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -247,8 +232,8 @@ function buildChartDecesTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -258,12 +243,12 @@ function buildChartDecesTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
+    let x_min = data_France[jour_nom][N-MAX_VALUES];
+    let x_last = data_France[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -271,11 +256,11 @@ function buildChartDecesTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            x: data_France[jour_nom][N-4],
+            y: data_France[data_nom+"_rolling7"].valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            text: printableTaux(data_France[data_nom+"_rolling7"].valeur[N-4]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -295,15 +280,9 @@ function buildChartDecesTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {

@@ -1,13 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-<head>
-               <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
-</head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
 
 <style>
 .btn-actif{
@@ -101,23 +91,27 @@ p {
 
     <h3>Nombre de personnes en soins critiques</h3>
     <p>Nombre de personnes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="lits_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="lits_reanimations" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance du nombre de soins critiques</h3>
     <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
+    <h3>Soins critiques par âge</h3>
+    <p>Personnes actuellement hospitalisées en soins critiques avec Covid19, par tranche d'âge.</p>
+    <div id="reanimations_par_age" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
     <h2>Admissions en soins critiques</h2>
     <div class="wrap">
         <div class="one">
-            <span id="nb_total_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <span id="nb_total_admissions_reanimation" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (total)</b><br>
             Nombre total d'admissions Covid19 en soins critiques depuis le printemps 2020.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
 
         <div class="one">
-            <span id="nb_quotidien_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <span id="nb_quotidien_admissions_reanimation" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (quotidien)</b><br>
             Nombre quotidien d'admissions Covid19 en soins critiques, en moyenne sur les 7 derniers jours.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
@@ -127,11 +121,11 @@ p {
 
     <h3>Nouvelles admissions en soins critiques</h3>
     <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des nouvelles admissions</h3>
     <p>Taux d'évolution du nombre d'admissions quotidiennes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <br>
     <br>
@@ -141,13 +135,13 @@ p {
 
 <script>
 
-function updateDataAdmissions(){
-    N = data_France.france.incid_reanimations.valeur.length;
-    let jour_nom = data_France.france["incid_reanimations"].jour_nom;
-    let jour = data_France.france[jour_nom][N-1];
+function updateDataAdmissionsReanimations(){
+    N = data_France.incid_reanimations.valeur.length;
+    let jour_nom = data_France["incid_reanimations"].jour_nom;
+    let jour = data_France[jour_nom][N-1];
 
-    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations_total.valeur);
-    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations.valeur[N-1]);
+    document.getElementById("nb_total_admissions_reanimation").innerHTML = printableNumber(data_France.incid_reanimations_total.valeur);
+    document.getElementById("nb_quotidien_admissions_reanimation").innerHTML = printableNumber(data_France.incid_reanimations.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
@@ -156,11 +150,11 @@ function updateDataAdmissions(){
 
 function buildChartReanimations(){
     let data_nom = "reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
+    let jour_nom = data_France[data_nom].jour_nom;
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: '%{y:.1f} reanimations<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -171,11 +165,11 @@ function buildChartReanimations(){
         }
     };
 
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
+    let N = data_France[jour_nom].length;
+    let x_min = data_France[jour_nom][N-300];
+    let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur);
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur);
 
     var layout = { 
         images: IMAGES,
@@ -184,10 +178,10 @@ function buildChartReanimations(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France.france[data_nom].valeur[N-1] - data_France.france[data_nom].valeur[N-8]) + " / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(" + printableNumberEvolution(data_France[data_nom].valeur[N-1] - data_France[data_nom].valeur[N-8]) + " / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -207,15 +201,9 @@ function buildChartReanimations(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -231,12 +219,12 @@ function buildChartReanimations(){
 function buildChartReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
     let data_nom = "croissance_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
+    let jour_nom = data_France[data_nom].jour_nom;
+    let N = data_France[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        x: data_France[jour_nom].slice(9, N-3),
+        y: data_France[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -247,7 +235,7 @@ function buildChartReanimationsTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
+    data_France[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -256,8 +244,8 @@ function buildChartReanimationsTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -267,12 +255,12 @@ function buildChartReanimationsTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
+    let x_min = data_France[jour_nom][N-MAX_VALUES];
+    let x_last = data_France[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -280,11 +268,11 @@ function buildChartReanimationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-1],
-            y: data_France.france[data_nom].valeur[N-1],
+            x: data_France[jour_nom][N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom].valeur[N-1]) + " %",
+            text: printableTaux(data_France[data_nom].valeur[N-1]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -304,15 +292,9 @@ function buildChartReanimationsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -326,14 +308,14 @@ function buildChartReanimationsTauxDeCroissance(){
 }
 
 function buildChartNouvellesReanimations(){
-    updateDataAdmissions();
+    updateDataAdmissionsReanimations();
 
     let data_nom = "incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
+    let jour_nom = data_France[data_nom].jour_nom;
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: '%{y:.1f} nouvelles admissions<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -344,11 +326,11 @@ function buildChartNouvellesReanimations(){
         }
     };
 
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
+    let N = data_France[jour_nom].length;
+    let x_min = data_France[jour_nom][N-300];
+    let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -357,10 +339,10 @@ function buildChartNouvellesReanimations(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -372,7 +354,7 @@ function buildChartNouvellesReanimations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(201, 4, 4, 1)',
-            ax: -50,
+            ax: -100,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -380,15 +362,9 @@ function buildChartNouvellesReanimations(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -404,12 +380,12 @@ function buildChartNouvellesReanimations(){
 function buildChartNouvellesReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
     let data_nom = "croissance_incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
+    let jour_nom = data_France[data_nom].jour_nom;
+    let N = data_France[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        x: data_France[jour_nom].slice(9, N-3),
+        y: data_France[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution nouvelles admissions (moyenne) : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -420,7 +396,7 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
+    data_France[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -429,8 +405,8 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: 'Évolution nouvelles admissions : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -440,12 +416,12 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
+    let x_min = data_France[jour_nom][N-MAX_VALUES];
+    let x_last = data_France[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -453,11 +429,11 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            x: data_France[jour_nom][N-4],
+            y: data_France[data_nom+"_rolling7"].valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            text: printableTaux(data_France[data_nom+"_rolling7"].valeur[N-4]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -477,15 +453,9 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -496,6 +466,44 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     var data = [trace1, trace2];
 
     Plotly.newPlot('nouvelles_reanimations_taux_croissance', data, layout, config);
+}
+
+function buildChartReanimationsParAge(){
+    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/api/hospitalisations_par_age.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', URL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        data = request.response;
+        var trace1 = {
+            x: data['rea'],
+            y: data["cl_age90"],
+            name: '',
+            text: data['rea'],
+            textposition: 'auto',
+            orientation: 'h',
+            marker: {
+                color: 'rgba(55,128,191,0.6)',
+                width: 1
+            },
+            type: 'bar'
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            margin: {
+                t: MARGIN.t,
+                r: MARGIN.r,
+                l: 70,
+                b: MARGIN.b
+            }
+        };
+
+        Plotly.newPlot('reanimations_par_age', data, layout);  
+    }
+    
 }
 
 

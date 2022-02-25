@@ -1,15 +1,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <head>
-               <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.1.0/plotly-locale-fr.min.js" integrity="sha512-LNl5CA52EQN7w9dlZhK8x8OuX6yldsqBIU+GWM806iViujAw6KjQ1a9h34UEkidQotn+DOTjGHJcYJ4HgdsF/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
 
 <style>
+h3 {
+    margin-top: 30px;
+}
+h2 {
+    margin-top: 50px;
+}
 .btn-actif{
     border: 1px solid black;
     padding: 6px;
@@ -122,43 +124,41 @@ p {
     <br>
     <h3>Nombre de cas positifs (date de prélèvement)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
     
     <h3>Taux de croissance des cas (date de prélèvement)</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
     <h3>Nombre de cas positifs (date de publication)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de saisie du résultat de test par le professionel de santé (dernière donnée : J-0).</p>
-    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span>
 
     <h3>Taux de croissance des cas (date de publication)</h3>
     <p>Taux d'évolution du nombre de cas positifs, par date de saisie du résultat (dernière donnée : J-0), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span>
 
 
     <h3>Taux de positivité des tests</h3>
     <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
-    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1100px; min-height: 300px; max-height: 800px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
     <h2>Dépistage</h2>
     <h3>Nombre de tests effectués</h3>
     <p>Nombre total de tests Covid effectués chaque jour (antigéniques et PCR).</p>
-    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1100px; min-height: 300px; max-height: 800px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
     <br>
     <h3>Taux de croissance des tests effectués</h3>
     <p>Taux d'évolution du nombre de tests réalisés (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des tests, une barre verte une décroissance.</p>
-    <div id="tests_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <div id="tests_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; min-height: 300px; max-height: 800px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
-    <br>
-    Données : Santé publique France
     <br>
 
     <div style="margin-bottom: 200px;"> </div>
@@ -184,7 +184,11 @@ p {
 <script>
 
 let BUTTONS_TO_REMOVE = ['toImage', 'lasso2d', 'zoomIn2d', 'zoomOut2d'];
-let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
+let config = {responsive: true,
+              displaylogo: false,
+              locale: 'fr',
+              showAxisDragHandles: true,
+              modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
 let IMAGES = [
             {
             x: 0.45,
@@ -199,9 +203,16 @@ let IMAGES = [
             }
         ];
 
+let MARGIN = {
+            t: 0,
+            b:40,
+            r:0,
+            l:50
+    };
+
 download_data();
 function download_data(){
-    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json';
+    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr_france.json';
     var request = new XMLHttpRequest();
     request.open('GET', URL);
     request.responseType = 'json';
@@ -217,11 +228,13 @@ function download_data(){
         buildChartTestsTauxDeCroissance();
 
         buildChartHospitalisations();
+        buildChartHospitalisationsParAge();
         buildChartHospitalisationsTauxDeCroissance();
         buildChartNouvellesHospitalisations();
         buildChartNouvellesHospitalisationsTauxDeCroissance();
 
         buildChartReanimations();
+        buildChartReanimationsParAge();
         buildChartReanimationsTauxDeCroissance();
         buildChartNouvellesReanimations();
         buildChartNouvellesReanimationsTauxDeCroissance();
@@ -245,16 +258,23 @@ function printableNumber(x){
     return x
 };
 
-function updateDataCas(){
-    N = data_France.france.cas.valeur.length;
-    let jour_nom = data_France.france["cas"].jour_nom;
-    let jour = data_France.france[jour_nom][N-1];
-    
-    N_spf = data_France.france.jour_spf_opendata.length
-    let jour_spf = data_France.france.jour_spf_opendata[N_spf-1];
+function printableNumberEvolution(x){
+    x = (x<0?"":"+") + x;
+    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+    x = x.replace('.', ',');
+    return x
+};
 
-    document.getElementById("nb_total_cas_positifs").innerHTML = printableNumber(data_France.france.cas_total.valeur);
-    document.getElementById("nb_quotidien_cas_positifs").innerHTML = printableNumber(data_France.france.cas.valeur[N-1]);
+function updateDataCas(){
+    N = data_France.cas.valeur.length;
+    let jour_nom = data_France["cas"].jour_nom;
+    let jour = data_France[jour_nom][N-1];
+    
+    N_spf = data_France.jour_spf_opendata.length
+    let jour_spf = data_France.jour_spf_opendata[N_spf-1];
+
+    document.getElementById("nb_total_cas_positifs").innerHTML = printableNumber(data_France.cas_total.valeur);
+    document.getElementById("nb_quotidien_cas_positifs").innerHTML = printableNumber(data_France.cas.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
@@ -268,8 +288,8 @@ function buildChartCas(){
     updateDataCas();
 
     var trace_cas = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.cas_brut.valeur,
+        x: data_France.jour_incid,
+        y: data_France.cas_brut.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "cas",
         type: 'bar',
@@ -280,8 +300,8 @@ function buildChartCas(){
     };
 
     var trace_cas_rolling = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.cas.valeur,
+        x: data_France.jour_incid,
+        y: data_France.cas.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Cas (moyenne 7 jours)",
         mode: 'lines',
@@ -293,25 +313,19 @@ function buildChartCas(){
         }
     };
 
-    let N = data_France.france.jour_incid.length;
-    let x_min = data_France.france.jour_incid[N-300];
-    let x_max = data_France.france.jour_incid[N-1];
+    let N = data_France.jour_incid.length;
+    let x_min = data_France.jour_incid[N-300];
+    let x_max = data_France.jour_incid[N-1];
     let y_min = 0;
-    let y_max = 1.2*Math.max.apply(Math, data_France.france.cas.valeur);
+    let y_max = 1.2*Math.max.apply(Math, data_France.cas.valeur);
 
     var layout = { 
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
-        margin: {
-            l: 30,
-            r: 20,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -321,10 +335,10 @@ function buildChartCas(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.cas.valeur[N-1],
+            y: data_France.cas.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(printableNumber(data_France.france.cas.valeur[N-1])) + " cas<br>" + printableTaux(data_France.france.croissance_cas_rolling7.valeur[N-4]) + "%",
+            text: String(printableNumber(data_France.cas.valeur[N-1])) + " cas<br>" + printableTaux(data_France.croissance_cas_rolling7.valeur[N-4]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -352,10 +366,10 @@ function buildChartCas(){
 }
 
 function buildChartCasSpf(){
-
+    console.log(data_France.jour_spf_opendata)
     var trace_cas = {
-        x: data_France.france.jour_spf_opendata,
-        y: data_France.france["cas_spf_opendata"].valeur,
+        x: data_France.jour_spf_opendata,
+        y: data_France["cas_spf_opendata"].valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "cas",
         type: 'bar',
@@ -366,8 +380,8 @@ function buildChartCasSpf(){
     };
 
     var trace_cas_rolling = {
-        x: data_France.france.jour_spf_opendata,
-        y: data_France.france.cas_spf_opendata_rolling.valeur,
+        x: data_France.jour_spf_opendata,
+        y: data_France.cas_spf_opendata_rolling.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Cas (moyenne 7 jours)",
         mode: 'lines',
@@ -381,8 +395,8 @@ function buildChartCasSpf(){
     };
 
     var trace_cas_rolling_corrige = {
-        x: data_France.france.jour_spf_opendata,
-        y: data_France.france.cas_spf_opendata_rolling_corrige.valeur,
+        x: data_France.jour_spf_opendata,
+        y: data_France.cas_spf_opendata_rolling_corrige.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Cas (moyenne 7 jours, correction j. fériés)",
         mode: 'lines',
@@ -394,25 +408,19 @@ function buildChartCasSpf(){
         }
     };
 
-    let N = data_France.france.jour_spf_opendata.length;
-    let x_min = data_France.france.jour_spf_opendata[N-300];
-    let x_max = data_France.france.jour_spf_opendata[N-1];
+    let N = data_France.jour_spf_opendata.length;
+    let x_min = data_France.jour_spf_opendata[N-300];
+    let x_max = data_France.jour_spf_opendata[N-1];
     let y_min = 0;
-    let y_max = 1.2 * Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur);
+    let y_max = 1.2 * Math.max.apply(Math, data_France.cas_spf_opendata_rolling.valeur);
 
     var layout = { 
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
-        margin: {
-            l: 30,
-            r: 20,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -422,11 +430,11 @@ function buildChartCasSpf(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.cas_spf_opendata_rolling.valeur[N-1],
+            y: data_France.cas_spf_opendata_rolling.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            //text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas",
-            text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas<br>" + printableTaux(data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4]) + "%",
+            //text: String(printableNumber(data_France.cas_spf_opendata_rolling.valeur[N-1])) + " cas",
+            text: String(printableNumber(data_France.cas_spf_opendata_rolling.valeur[N-1])) + " cas<br>" + printableTaux(data_France.croissance_cas_spf_opendata_rolling7.valeur[N-4]) + "%",
 
             showarrow: true,
             font: {
@@ -439,8 +447,8 @@ function buildChartCasSpf(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgb(8, 115, 191)',
-            ax: -30,
-            ay: -30,
+            ax: -100,
+            ay: -40,
             borderwidth: 1,
             borderpad: 2,
             bgcolor: 'rgba(256, 256, 256, 0.8)',
@@ -456,11 +464,11 @@ function buildChartCasSpf(){
 
 function buildChartCasTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_incid.length;
+    let N = data_France.jour_incid.length;
 
     var trace1 = {
-        x: data_France.france.jour_incid.slice(9, N-3),
-        y: data_France.france.croissance_cas_rolling7.valeur.slice(9, N-3),
+        x: data_France.jour_incid.slice(9, N-3),
+        y: data_France.croissance_cas_rolling7.valeur.slice(9, N-3),
         hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -472,7 +480,7 @@ function buildChartCasTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france.croissance_cas.valeur.map((value, idx) => {
+    data_France.croissance_cas.valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -481,8 +489,8 @@ function buildChartCasTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.croissance_cas.valeur,
+        x: data_France.jour_incid,
+        y: data_France.croissance_cas.valeur,
         hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -492,12 +500,12 @@ function buildChartCasTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
-    let x_last = data_France.france.jour_incid[N-1];
+    let x_min = data_France.jour_incid[N-MAX_VALUES];
+    let x_last = data_France.jour_incid[N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France.croissance_cas.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.croissance_cas.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -505,11 +513,11 @@ function buildChartCasTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france.jour_incid[N-4],
-            y: data_France.france.croissance_cas_rolling7.valeur[N-4],
+            x: data_France.jour_incid[N-4],
+            y: data_France.croissance_cas_rolling7.valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: String(printableTaux(data_France.france.croissance_cas_rolling7.valeur[N-4])) + ' %',
+            text: String(printableTaux(data_France.croissance_cas_rolling7.valeur[N-4])) + ' %',
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -529,15 +537,9 @@ function buildChartCasTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -552,11 +554,11 @@ function buildChartCasTauxDeCroissance(){
 
 function buildChartCasSpfTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_spf_opendata.length;
+    let N = data_France.jour_spf_opendata.length;
 
     var trace1 = {
-        x: data_France.france.jour_spf_opendata.slice(9, N-3),
-        y: data_France.france.croissance_cas_spf_opendata_rolling7.valeur.slice(9, N-3),
+        x: data_France.jour_spf_opendata.slice(9, N-3),
+        y: data_France.croissance_cas_spf_opendata_rolling7.valeur.slice(9, N-3),
         hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -569,7 +571,7 @@ function buildChartCasSpfTauxDeCroissance(){
     
 
     var bar_colors = [];
-    data_France.france.croissance_cas_spf_opendata.valeur.map((value, idx) => {
+    data_France.croissance_cas_spf_opendata.valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -578,8 +580,8 @@ function buildChartCasSpfTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france.jour_spf_opendata,
-        y: data_France.france.croissance_cas_spf_opendata.valeur,
+        x: data_France.jour_spf_opendata,
+        y: data_France.croissance_cas_spf_opendata.valeur,
         hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -589,12 +591,12 @@ function buildChartCasSpfTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france.jour_spf_opendata[N-MAX_VALUES];
-    let x_last = data_France.france.jour_spf_opendata[N-1];
+    let x_min = data_France.jour_spf_opendata[N-MAX_VALUES];
+    let x_last = data_France.jour_spf_opendata[N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -602,11 +604,11 @@ function buildChartCasSpfTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france.jour_spf_opendata[N-4],
-            y: data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4],
+            x: data_France.jour_spf_opendata[N-4],
+            y: data_France.croissance_cas_spf_opendata_rolling7.valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: String(printableTaux(data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4])) + ' %',
+            text: String(printableTaux(data_France.croissance_cas_spf_opendata_rolling7.valeur[N-4])) + ' %',
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -626,15 +628,9 @@ function buildChartCasSpfTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -649,11 +645,11 @@ function buildChartCasSpfTauxDeCroissance(){
 
 function buildChartCasTauxDePositivite(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_incid.length;
+    let N = data_France.jour_incid.length;
 
     var trace1 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.taux_positivite.valeur,
+        x: data_France.jour_incid,
+        y: data_France.taux_positivite.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance (moyenne 7 j)",
         fill: 'tozeroy',
@@ -664,11 +660,11 @@ function buildChartCasTauxDePositivite(){
         }
     };
 
-    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
-    let x_max = data_France.france.jour_incid[N-1];
+    let x_min = data_France.jour_incid[N-MAX_VALUES];
+    let x_max = data_France.jour_incid[N-1];
 
     let y_min = 0;
-    let y_max = 1.2*Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
+    let y_max = 1.2*Math.max.apply(Math, data_France.taux_positivite.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -677,10 +673,10 @@ function buildChartCasTauxDePositivite(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.taux_positivite.valeur[N-1],
+            y: data_France.taux_positivite.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(data_France.france.taux_positivite.valeur[N-1]) + ' %',
+            text: String(data_France.taux_positivite.valeur[N-1]) + ' %',
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -700,15 +696,9 @@ function buildChartCasTauxDePositivite(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -723,8 +713,8 @@ function buildChartCasTauxDePositivite(){
 
 function buildChartTests(){
     var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.tests.valeur,
+        x: data_France.jour_incid,
+        y: data_France.tests.valeur,
         hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -735,11 +725,11 @@ function buildChartTests(){
         }
     };
 
-    let N = data_France.france.jour_incid.length;
-    let x_min = data_France.france.jour_incid[N-300];
-    let x_max = data_France.france.jour_incid[N-1];
+    let N = data_France.jour_incid.length;
+    let x_min = data_France.jour_incid[N-300];
+    let x_max = data_France.jour_incid[N-1];
     let y_min = 0;
-    let y_max = 1.2*Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
+    let y_max = 1.2*Math.max.apply(Math, data_France.tests.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -748,10 +738,10 @@ function buildChartTests(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.tests.valeur[N-1],
+            y: data_France.tests.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(printableNumber(data_France.france.tests.valeur[N-1])) + '<br> tests<br>' + printableTaux(data_France.france.croissance_tests_rolling7.valeur[N-4]) + "%",
+            text: String(printableNumber(data_France.tests.valeur[N-1])) + '<br> tests<br>' + printableTaux(data_France.croissance_tests_rolling7.valeur[N-4]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -771,15 +761,9 @@ function buildChartTests(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 35,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max]
         },
         yaxis: {
@@ -794,11 +778,11 @@ function buildChartTests(){
 
 function buildChartTestsTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_incid.length;
+    let N = data_France.jour_incid.length;
 
     var trace1 = {
-        x: data_France.france.jour_incid.slice(9, N-3),
-        y: data_France.france.croissance_tests_rolling7.valeur.slice(9, N-3),
+        x: data_France.jour_incid.slice(9, N-3),
+        y: data_France.croissance_tests_rolling7.valeur.slice(9, N-3),
         hovertemplate: '%{y:.1f}% tests en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -810,7 +794,7 @@ function buildChartTestsTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france.croissance_tests.valeur.map((value, idx) => {
+    data_France.croissance_tests.valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -819,8 +803,8 @@ function buildChartTestsTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.croissance_tests.valeur,
+        x: data_France.jour_incid,
+        y: data_France.croissance_tests.valeur,
         hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -830,12 +814,12 @@ function buildChartTestsTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
-    let x_last = data_France.france.jour_incid[N-1];
+    let x_min = data_France.jour_incid[N-MAX_VALUES];
+    let x_last = data_France.jour_incid[N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france.croissance_tests.valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france.croissance_tests.valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France.croissance_tests.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.croissance_tests.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -843,11 +827,11 @@ function buildChartTestsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france.jour_incid[N-4],
-            y: data_France.france.croissance_tests_rolling7.valeur[N-4],
+            x: data_France.jour_incid[N-4],
+            y: data_France.croissance_tests_rolling7.valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: String(printableTaux(data_France.france.croissance_tests_rolling7.valeur[N-4])) + ' %',
+            text: String(printableTaux(data_France.croissance_tests_rolling7.valeur[N-4])) + ' %',
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -867,15 +851,9 @@ function buildChartTestsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
